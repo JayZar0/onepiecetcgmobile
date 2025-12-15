@@ -1,0 +1,7 @@
+{
+  "name": "devtcg",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
