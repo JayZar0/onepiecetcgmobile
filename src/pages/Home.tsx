@@ -9,6 +9,11 @@ import {
 import ExploreContainer from '../components/ExploreContainer'
 import './Home.css'
 
+/**
+ * This is going to be the home page that will be used to navigate though the
+ * application.
+ * @returns 
+ */
 const Home: React.FC = () => {
   return (
     <IonPage>
@@ -23,6 +28,7 @@ const Home: React.FC = () => {
             <IonTitle size="large">Main Menu</IonTitle>        
           </IonToolbar>
         </IonHeader>
+        <IonButton>To Do List</IonButton>
         <IonButton>Play</IonButton>
         <IonButton>Collection</IonButton>
         <IonButton>Shop</IonButton>
