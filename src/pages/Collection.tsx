@@ -80,7 +80,7 @@ const Collection: React.FC = () => {
       </IonSelect>
       <IonContent>
         {loading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
+          <div id='loading'>
             <IonSpinner name="crescent" />
           </div>
         ) : (

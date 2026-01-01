@@ -4,3 +4,9 @@ ion-img {
     margin: 20px;
     float: left;
 }
+
+#loading { 
+    display: 'flex';
+    justify-content: 'center';
+    padding: 20 
+}
