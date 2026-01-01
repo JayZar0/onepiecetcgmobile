@@ -45,7 +45,27 @@ const Collection: React.FC = () => {
     setLoading(true)
     fetch(`https://www.optcgapi.com/api/sets/${viewedSet}`)
       .then(res => res.json())
-      .then((result: Card[]) => setCards(result))
+      .then((result: Card[]) => setCards(result.sort((a, b) => {
+        const typeRank = (t?: string) => {
+          const tt = (t ?? '').toLowerCase()
+          if (tt.includes('character')) return 0
+          if (tt.includes('event')) return 1
+          if (tt.includes('stage') || tt.includes('stages')) return 2
+          if (tt.includes('leader')) return 3
+          return 4
+        }
+
+        const trA = typeRank(a.card_type)
+        const trB = typeRank(b.card_type)
+        if (trA !== trB) return trA - trB
+
+        const ca = (a.card_color ?? '').toLowerCase()
+        const cb = (b.card_color ?? '').toLowerCase()
+        const colorDiff = ca.localeCompare(cb)
+        if (colorDiff !== 0) return colorDiff
+
+        return (a.card_cost ?? 0) - (b.card_cost ?? 0)
+      })))
       .catch(err => console.error(err))
       .finally(() => setLoading(false))
   }, [viewedSet])
